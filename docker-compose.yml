@@ -1,4 +1,6 @@
+name: timorya
 
+services:
   timorya-landing-page:
     container_name: timorya-landing-page
     build:
