@@ -11,7 +11,7 @@ export const Header = () => {
 
   return (
     <header>
-      <nav className="border-b border-gray-200 bg-white px-4 py-2.5 lg:px-6">
+      <nav className="relative border-b border-gray-200 bg-white px-4 py-2.5 lg:px-6">
         <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between">
           <Link href="/" className="flex flex-3/12 items-center">
             <TimoryaLogo />
@@ -72,10 +72,10 @@ export const Header = () => {
           <div
             id="mobile-menu-2"
             className={classNames(
-              "top-[60px] w-full flex-6/12 items-center justify-center overflow-hidden bg-white lg:static lg:top-auto lg:z-auto lg:flex lg:h-auto lg:w-auto lg:overflow-auto",
+              "top-[56px] w-full flex-6/12 items-center justify-center overflow-hidden bg-white lg:static lg:top-auto lg:z-auto lg:flex lg:h-auto lg:w-auto lg:overflow-auto",
               {
                 [openMenu
-                  ? "fixed left-0 z-50 w-screen border border-gray-100 pb-2"
+                  ? "absolute left-0 z-50 w-screen border border-gray-100 pb-2"
                   : "hidden lg:flex lg:w-auto lg:space-x-8"]: true,
               },
             )}
