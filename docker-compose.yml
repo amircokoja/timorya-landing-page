@@ -6,6 +6,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_WEBSITE_API: ${NEXT_PUBLIC_WEBSITE_API}
+        NEXT_PUBLIC_WEBSITE_URL: ${NEXT_PUBLIC_WEBSITE_URL}
     image: timorya-landing-page
     environment:
       - PORT=4001
@@ -13,7 +16,7 @@ services:
       - .env
     ports:
       - "4001:4001"
-    volumes:
-      - .:/app
-      - /app/node_modules
     restart: always
+
+
+

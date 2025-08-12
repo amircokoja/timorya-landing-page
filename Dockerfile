@@ -4,17 +4,26 @@ FROM node:18-alpine
 # Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json first
 COPY package.json package-lock.json ./
+RUN npm ci --legacy-peer-deps
 
-# Force dependency resolution during install
-RUN npm install --legacy-peer-deps
+# receive build-time values
+ARG NEXT_PUBLIC_WEBSITE_API
+ARG NEXT_PUBLIC_WEBSITE_URL
 
-# Copy the rest of the project files
+ENV NEXT_PUBLIC_WEBSITE_API=$NEXT_PUBLIC_WEBSITE_API
+ENV NEXT_PUBLIC_WEBSITE_URL=$NEXT_PUBLIC_WEBSITE_URL
+
 COPY . .
 
-# Expose port
+# Build app (creates .next/)
+RUN npm run build
+
+# ⬇️ Make sure it's not being ignored by .dockerignore!
+
+# Confirm the build exists
+RUN ls -la .next
+
 EXPOSE 4001
 
-# Start Next.js
-CMD ["npm", "run", "dev"]
+CMD ["npm", "start"]
